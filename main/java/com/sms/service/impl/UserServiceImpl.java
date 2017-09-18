@@ -14,12 +14,12 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public boolean createUser(UserEntity user) {
+	public Integer createUser(UserEntity user) {
 		if (null == user || userRepository.userExists(user.getEmail(), user.getMobile())) {
-			return false;
+			return -1;
 		}
-		userRepository.createUser(user);
-		return true;
+		Integer status = userRepository.createUser(user.getEmail(), user.getUserName()/*, user.getPassword(), user.getMobile(), user.getAlternateMobile(), user.getSysCreationDate(), user.getStatus(), user.getLastUpadteBy()*/);
+		return status;
 	}
 
 	@Override
@@ -32,7 +32,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Integer updateUserById(UserEntity entity) {
-		return userRepository.updateUserByUserId(entity);
+		return userRepository.updateUserByUserId(
+				entity);
 	}
 
 	@Override

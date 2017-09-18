@@ -23,7 +23,7 @@ public class UserController {
 	private UserService userservice;
 
 	@PostMapping("/register")
-	public ResponseEntity<Boolean> createUser(@RequestBody UserEntity userEntity) {
+	public ResponseEntity<Integer> createUser(@RequestBody UserEntity userEntity) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(userservice.createUser(userEntity));
 	}
 	
