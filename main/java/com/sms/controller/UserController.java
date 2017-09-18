@@ -33,11 +33,12 @@ public class UserController {
 	}
 	
 	@PutMapping("{userId}")
-	public ResponseEntity<Boolean> updateUser(@PathVariable String userId, @RequestBody UserEntity entity){
-		return ResponseEntity.ok(userservice.updateUser(entity));
+	public ResponseEntity<Integer> updateUserById(@PathVariable String userId, @RequestBody UserEntity entity){
+		return ResponseEntity.ok(userservice.updateUserById(entity));
 	}
 	@DeleteMapping("{userId}")
-	public ResponseEntity<Boolean> deleteUser(@PathVariable String userId){
-		return ResponseEntity.ok(userservice.deleteUser(userId));
+	public ResponseEntity<Integer> deleteUserById(@PathVariable Integer userId){
+		return ResponseEntity.ok(userservice.deleteUserById(userId));
 	}
+	
 }

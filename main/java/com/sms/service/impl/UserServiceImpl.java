@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sms.domain.entities.UserEntity;
 import com.sms.persistance.UserRepository;
+import com.sms.persistance.custom.UserRepositoryCustom;
 import com.sms.service.UserService;
 
 @Service
@@ -30,12 +31,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Boolean updateUser(UserEntity entity) {
+	public Integer updateUserById(UserEntity entity) {
 		return userRepository.updateUserByUserId(entity);
 	}
 
 	@Override
-	public Boolean deleteUser(String userId) {
+	public Integer deleteUserById(Integer userId) {
 		return userRepository.deleteUserByUserId(userId);
 	}
+
+	
 }
